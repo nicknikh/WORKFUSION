@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of products</title>
+</head>
+<style>
+    table,th,td{
+        border: 1px solid ;
+    }
+
+</style>
+<body>
+    <h1>Displaying a list of products</h1>
+    <table id="main">
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </table>
+    <script>
+        var products  = [
+            {id : 1,name:"Iphone 14",price : 100000},
+            {id : 2,name:"Iphone 13",price : 65000},
+        ]
+        for(var i of products)
+        {
+            document.getElementById("main").innerHTML+= "<tr>"+ "<td>" + i.id + "</td>" + "<td>" + i.name + "</td>"+ "<td>" + i.price + "</td>" + "</tr>" ;
+            
+        }
+    </script>
+</body>
+</html>

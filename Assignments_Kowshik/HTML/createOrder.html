@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create order</title>
+</head>
+<body>
+    <div>
+        Name : <input placeholder="Enter your name" id="name" type="text"><br/><br/>
+        Phone number : <input placeholder="Enter phone number" id="phoneNumber" type="number"><br/><br/>
+        City : <input placeholder="Enter the city" id="city" type="text"> <br/><br/>
+        <select name="option" id="option">
+            <option value="Iphone">Iphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Shirt">Shirt</option>
+        </select>
+        <button onclick="createOrder()">Create order</button>
+    </div>
+    <script>
+        function createOrder()
+        {
+            alert(`hello ${document.getElementById("name").value}, you've placed ${document.getElementById("option").value} `);
+        }
+    </script>
+</body>
+</html>
