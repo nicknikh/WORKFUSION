@@ -1,0 +1,30 @@
+<html>
+    <title>Orders Page</title>
+    <body bgcolor="lightblue">
+        <br>
+        <form align="center">
+        <h1 align="center">Order Page</h1>
+        First Name:<input type="text" id="fname"><br><br>
+            
+        Last Name:<input type="text" id="lname"><br><br>
+
+        Phone Number:<input type="text" id="Pnumber"><br><br>
+
+        Products Avaliable:<select name="product" id="product">
+           <option value="Iphone">Iphone</option>
+           <option value="Laptop">Laptop</option>
+           <option value="television">Television</option>
+           <option value="WashingMachine">WashingMachine</option>
+         </select>
+
+         <br><br>
+        <input type="submit" id="Submit" value="Order" onclick="Ordered()">
+        <input type="reset" value="Reset" id="Reset">
+   </form>
+   <script>function Ordered()
+    {
+        alert(`hello ${document.getElementById("fname").value}, you've placed ${document.getElementById("product").value} `);
+    }</script>
+    </body>
+
+</html>
