@@ -1,0 +1,16 @@
+create database ShoppingDB;
+use ShoppingDB;
+create table Customer(customerId int(10) primary key auto_increment,customerName varchar(30) not null,phoneNumber int(10));
+create table Address(customerId int(10),street varchar(20), city varchar(20), pincode int(6));
+create table Product(productId int(5) primary key,productName varchar(30), productPrice int(6),productType varchar(20));
+create table Orders(orderId int(10),customerId int(10),productId int(5), amount int(6),orderDate Date);
+drop table Product;
+create table Product(productId int(5) primary key,productName varchar(30), productPrice int(6),productType varchar(20));
+select * from Customer;
+select * from Address;
+select * from Product;
+select * from Orders;
+show tables;
+show databases;
+use ShoppingDB;
+insert into Customer values(1,"Hari",8498);

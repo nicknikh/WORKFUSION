@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Registration_Form.css" />
+  <title>Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+  <form>
+      <fieldset>
+        <label for="Name">Enter Your Name: <input id="Name" name="Name" type="text" required /></label>
+        <label for="age">Enter Your Age: <input id="age" name="age" type="number" min=18 max=100 required /></label>
+        <label for="phone-number">Enter Your Phone Number: <input id="phone-number" name="PhoneNumber" type="number" required /></label>
+        <label for="city">Enter Your City: <input id="city" name="city" type="text" required /></label>
+      </fieldset>
+      <input type="submit" value="Submit" onclick="submitted()"/>
+    </form>
+    <script src="Registration_Form.js"></script>
+  </body>
+</html>
