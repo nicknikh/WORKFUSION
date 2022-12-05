@@ -6,14 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.workfusion.beans.Customer;
 
-public class CustomerRepository {
+public class CustomerRepository 
+{
+	
 	   static final String DB_URL = "jdbc:mysql://localhost:3306/ecom?characterEncoding=utf8";
 	   static final String USER = "root";
 	   static final String PASS = "2508@Var";
-	   private int id;
+	   
+	   private int id; //For customer-id
 	   private int opt;
 
 	public int getOpt() 
@@ -35,7 +39,7 @@ public class CustomerRepository {
 	{
 		this.id = id;
 	}
-
+	
 	public void addNewCustomer(Customer c) throws ClassNotFoundException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -92,7 +96,7 @@ public class CustomerRepository {
 		       {
 		    	   isLogin = true;
 		    	   count+=1;
-		    	   setId(Integer.parseInt(rs.getString(1)));
+		    	   setId(Integer.parseInt(rs.getString(1))); // To get customerId every-time the customer logs-in. 
 		    	   System.out.println("Logged in....");
 		       }
 		     }
@@ -118,7 +122,7 @@ public class CustomerRepository {
 			
 			PreparedStatement query = con.prepareStatement("Select * from cutomer");
 			int i=0;
-			switch(getOpt())
+			switch(getOpt())//getOpt will enable to run only the necessary query to update the values in the database.
 			{
 			case 1:
 				query = con.prepareStatement("Update customer set customerName = ? where customerId = ?");
@@ -155,11 +159,12 @@ public class CustomerRepository {
 					break;
 			}
 			System.out.println("Customer details updated!!");
-			
+			con.close();
 		}
 		catch(Exception e)
 		{
 			e.getMessage();
 		}
 	}
+	
 }

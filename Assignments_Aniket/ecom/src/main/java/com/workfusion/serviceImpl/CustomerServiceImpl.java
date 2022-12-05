@@ -1,9 +1,5 @@
 package com.workfusion.serviceImpl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 import com.workfusion.beans.Address;
@@ -14,10 +10,11 @@ import com.workfusion.services.CustomerService;
 public class CustomerServiceImpl implements CustomerService 
 {
 
+	//In this class the input values are being taken from the user.
 	Scanner scanner = new Scanner(System.in);
 	Customer c = new Customer();
 	Address a = new Address();
-	CustomerRepository cr = new CustomerRepository();
+	CustomerRepository cr = new CustomerRepository(); //CustomerRepository deals the logic part.
 	int opt=0;
 
 	public void addNewCustomer() {
@@ -41,7 +38,7 @@ public class CustomerServiceImpl implements CustomerService
 		a.setPinCode(scanner.nextLong());
 		c.setAddress(a);
 		try {
-			cr.addNewCustomer(c);
+			cr.addNewCustomer(c); // SQL Query and the logic for Adding the new customer is written in this method.
 			customerLogin();
 		}
 		catch (Exception e) 
@@ -55,13 +52,14 @@ public class CustomerServiceImpl implements CustomerService
 		// TODO Auto-generated method stub
 		try
 		{
+			//Flag is used to run and exit the loop.
 			boolean flag = true;
 			while(flag)
 			{
 				System.out.println("Choose option to edit your details.");
 				System.out.println("1.Name\n2.Phone no.\n3.Street\n4.City\n5.Pincode\n6.Exit\nEnter your Choice:");
 				int option = scanner.nextInt();
-				cr.setOpt(option);
+				cr.setOpt(option); //Used to reuse the option in CustomerRepository.
 				switch(option)
 				{
 				case 1: System.out.println("Enter the Name:");
@@ -81,13 +79,13 @@ public class CustomerServiceImpl implements CustomerService
 				break;
 				case 6:
 					flag =false;
-					break;
+					break;//Exits while loop.
 				default:
 					System.out.println("Invalid option.");
 					break;
 				}
 				c.setAddress(a);
-				cr.updateCustomer(c);
+				cr.updateCustomer(c); //SQL Query and the logic for customerUpdate is written in the method of CustomerRepository class.
 			}
 		}
 		catch(Exception e)
@@ -99,13 +97,14 @@ public class CustomerServiceImpl implements CustomerService
 	public boolean customerLogin() 
 	{
 		// TODO Auto-generated method stub
+		// Boolean helps in login verification.
 		boolean isLogin = false;
 		try {
 			System.out.println("Enter your username");
 			c.setCustomerUsername(scanner.next());
 			System.out.println("Enter your password");
 			c.setCustomerPassword(scanner.next());
-			isLogin = cr.customerLogin(c);
+			isLogin = cr.customerLogin(c); // isLogin value will be changed if the userName and password are in the database.
 		} 
 		catch (Exception e) 
 		{
@@ -114,25 +113,4 @@ public class CustomerServiceImpl implements CustomerService
 		return isLogin;
 	}
 	
-	public void displayProducts()
-	{
-		try
-		{
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecom?characterEncoding=utf8","root","2508@Var");
-			System.out.println("*****************************************************************************************");
-			System.out.println("Products available are:");
-			PreparedStatement ps=con.prepareStatement("select * from product");
-			ResultSet rs=ps.executeQuery();
-			while(rs.next())
-			{
-				System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getString(4));
-			}
-			System.out.println("*****************************************************************************************");
-		}
-		catch(Exception e)
-		{
-			e.getMessage();
-		}
-	}
 }

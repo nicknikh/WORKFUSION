@@ -20,8 +20,9 @@ public class Customer {
 	public String getCustomerName() {
 		return customerName;
 	}
-	public void setCustomerName(String customerName) {
-		if(customerName !=null)
+	public void setCustomerName(String customerName) 
+	{
+		if(customerName !=null && Character.isUpperCase(customerName.charAt(0)))
 		{
 			this.customerName = customerName; // Validation.
 		}
@@ -33,14 +34,14 @@ public class Customer {
 	public long getCustomerPhone() {
 		return customerPhone;
 	}
-	public void setCustomerPhone(long customerPhone) {
+	public void setCustomerPhone(long customerPhone) 
+	{
 		String str = Long.toString(customerPhone); // Validation
-		if(str.length() == 10)
+		if(str.length() == 10 && (str.charAt(0)>5))
 			this.customerPhone = customerPhone;
 		else
 		{
-			System.out.println("Invalid Phone Number");
-			this.customerPhone = 0;
+			//Invalid Phone-Number exception
 		}
 	}
 	public String getCustomerUsername() {

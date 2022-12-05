@@ -28,8 +28,7 @@ public class Address
 			this.pinCode = pinCode;
 		else
 		{
-			System.out.println("Invalid Pin-code");
-			this.pinCode = 0;
+			//addressinvalidException
 		}
 	}
 }
